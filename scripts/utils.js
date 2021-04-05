@@ -7,7 +7,8 @@ export function createCard(order) {
   //   });
 
   const cardTitle = document.createElement("h3");
-  cardTitle.innerText = encodeURI(`Id: ${order.id}`);
+  const encoded = encodeURI(`Id: ${order.id}`);
+  cardTitle.innerText = encoded;
   card.append(cardTitle);
 
   const cardTotal = document.createElement("p");
