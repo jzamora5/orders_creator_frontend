@@ -9,22 +9,25 @@ const getURL = (searchValue, searchType) => {
   const API_SEARCH_URL = SEARCH_ROUTES[searchType];
 
   switch (searchType) {
-    case "searchTerm":
-      return `${API_SEARCH_URL}/${searchValue}`;
-    case "date":
-      return `${API_SEARCH_URL}/${searchValue}`;
-    case "shipping":
-      return `${API_SEARCH_URL}/${searchValue}`;
-    case "orderId":
-      return `${API_SEARCH_URL}/${searchValue}`;
-    case "orderIdList":
-      return `${API_SEARCH_URL}/${searchValue}`;
     case "userOrders":
-      return `${API_SEARCH_URL}/${searchValue}`;
+      return `${API_SEARCH_URL}/${sessionStorage.getItem(
+        "userId"
+      )}/${searchValue}`;
+    // case "searchTerm":
+    //   return `${API_SEARCH_URL}/${searchValue}`;
+    // case "date":
+    //   return `${API_SEARCH_URL}/${searchValue}`;
+    // case "shipping":
+    //   return `${API_SEARCH_URL}/${searchValue}`;
+    // case "orderId":
+    //   return `${API_SEARCH_URL}/${searchValue}`;
+    // case "orderIdList":
+    //   return `${API_SEARCH_URL}/${searchValue}`;
 
     default:
       break;
   }
+  return `${API_SEARCH_URL}/${searchValue}`;
 };
 
 searchForm.onsubmit = async (e) => {

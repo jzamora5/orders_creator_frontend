@@ -26,6 +26,7 @@ loginForm.onsubmit = async (e) => {
 
   const jsonData = await response.json();
 
+  // console.log(jsonData);
+  sessionStorage.setItem("userId", jsonData.id);
   location.href = LOCAL_SEARCH;
-  console.log(jsonData);
 };
