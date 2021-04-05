@@ -7,15 +7,15 @@ export function createCard(order) {
   //   });
 
   const cardTitle = document.createElement("h3");
-  cardTitle.innerText = `Id: ${order.id}`;
+  cardTitle.innerText = String.raw`Id: ${order.id}`;
   card.append(cardTitle);
 
   const cardTotal = document.createElement("p");
-  cardTotal.innerText = `Total: $${order.total}`;
+  cardTotal.innerText = String.raw`Total: $${order.total}`;
   card.append(cardTotal);
 
   const cardCreated = document.createElement("p");
-  cardCreated.innerText = `Created In: $${order.created_at}`;
+  cardCreated.innerText = String.raw`Created In: $${order.created_at}`;
   card.append(cardCreated);
 
   // const cardList = document.createElement("ul");
