@@ -12,7 +12,7 @@ export const SEARCH_ROUTES = {
   searchTerm: `${API_URL}/orders/search`,
   date: `${API_URL}/orders/dates`,
   shipping: `${API_URL}/orders/shipping`,
-  orderId: `${API_URL}/order`,
+  orderId: `${API_URL}/orders`,
   orderIdList: `${API_URL}/orders`,
   userOrders: `${API_URL}/users`,
 };
