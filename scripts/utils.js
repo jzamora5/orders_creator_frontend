@@ -7,7 +7,7 @@ export function createCard(order) {
   //   });
 
   const cardTitle = document.createElement("h3");
-  cardTitle.innerText = String.raw`Id: ${order.id}`;
+  cardTitle.innerText = "Id:" + order.id;
   card.append(cardTitle);
 
   const cardTotal = document.createElement("p");
