@@ -16,5 +16,5 @@ export const SEARCH_ROUTES = {
   shipping: `${API_URL}/orders/shipping`,
   orderId: `${API_URL}/orders`,
   orderIdList: `${API_URL}/orders`,
-  userOrders: `${API_URL}/users`,
+  userOrders: `${API_URL}/orders/users`,
 };

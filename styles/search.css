@@ -16,8 +16,25 @@ html {
   justify-content: center;
 }
 
+.search-form {
+  border: 1px solid slategray;
+  padding: 18px;
+  width: 60%;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
 .search-bar {
-  width: 50%;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+#submitSearch {
+  background-color: cornsilk;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  height: 30px;
+  width: 60px;
+  margin-left: 10px;
 }
 
 .card {

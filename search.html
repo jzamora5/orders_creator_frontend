@@ -10,33 +10,42 @@
   <body id="body">
     <h1>Search</h1>
     <form id="search-form" class="search-form">
-      <input type="text" name="searchValue" class="search-bar" />
-      <label for="search-type">Filter By</label>
-      <select name="searchType" id="search-type">
-        <option value="userOrders">All User Orders</option>
-        <option value="searchTerm">Search Term</option>
-        <option value="date">Date</option>
-        <option value="shipping">Shipping</option>
-        <option value="orderId">Order Id</option>
-        <option value="orderIdList">Multiple Orders Id</option>
-      </select>
-      <label for="order_by">Order By</label>
-      <select name="orderBy" id="order-by">
-        <option value=""></option>
-        <option value="created_at">Created Date</option>
-        <option value="updated_at">Updated Date</option>
-        <option value="customer_name">Customer Name</option>
-        <option value="last_payment_date">Last Payment Date</option>
-        <option value="status">Order Status</option>
-        <option value="total">Total</option>
-        <option value="sub_total">Sub Total</option>
-        <option value="taxes">Taxes</option>
-      </select>
-      <select name="orderType" id="order-type">
-        <option value="asc">Ascending</option>
-        <option value="desc">Descending</option>
-      </select>
-      <input type="submit" />
+      <input
+        type="text"
+        name="searchValue"
+        class="search-bar"
+        id="search-bar"
+      />
+      <div>
+        <label for="search-type">Filter By</label>
+        <select name="searchType" id="search-type">
+          <option value="userOrders">All User Orders</option>
+          <option value="searchTerm">Search Term</option>
+          <option value="date">Date</option>
+          <option value="shipping">Shipping</option>
+          <option value="orderId">Order Id</option>
+          <option value="orderIdList">Multiple Orders Id</option>
+        </select>
+
+        <label for="order_by">Order By</label>
+        <select name="orderBy" id="order-by">
+          <option value=""></option>
+          <option value="created_at">Created Date</option>
+          <option value="updated_at">Updated Date</option>
+          <option value="customer_name">Customer Name</option>
+          <option value="last_payment_date">Last Payment Date</option>
+          <option value="status">Order Status</option>
+          <option value="total">Total</option>
+          <option value="sub_total">Sub Total</option>
+          <option value="taxes">Taxes</option>
+        </select>
+        <select name="orderType" id="order-type">
+          <option value="">Ascending</option>
+          <option value="-">Descending</option>
+        </select>
+
+        <input type="submit" id="submitSearch" />
+      </div>
     </form>
     <div id="orderCards"></div>
     <script src="scripts/search.js" type="module"></script>

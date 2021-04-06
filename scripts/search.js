@@ -5,20 +5,23 @@ const body = document.getElementById("body");
 const searchForm = document.getElementById("search-form");
 const orderCards = document.getElementById("orderCards");
 
-const getURL = (searchValue, searchType) => {
+const getURL = (searchValue, searchType, orderBy, orderType) => {
   const API_SEARCH_URL = SEARCH_ROUTES[searchType];
+  let sort = "";
+
+  if (orderBy.length > 0) sort = `sort=${orderType}${orderBy}`;
 
   switch (searchType) {
     case "userOrders":
       return `${API_SEARCH_URL}/${sessionStorage.getItem(
         "userId"
-      )}/${searchValue}`;
+      )}/${searchValue}?${sort}`;
     // case "searchTerm":
     //   return `${API_SEARCH_URL}/${searchValue}`;
     // case "date":
     //   return `${API_SEARCH_URL}/${searchValue}`;
     case "shipping":
-      return `${API_SEARCH_URL}/?${searchValue}`;
+      return `${API_SEARCH_URL}/?${searchValue}&${sort}`;
     // case "orderId":
     //   return `${API_SEARCH_URL}/${searchValue}`;
     // case "orderIdList":
@@ -27,7 +30,7 @@ const getURL = (searchValue, searchType) => {
     default:
       break;
   }
-  return `${API_SEARCH_URL}/${searchValue}`;
+  return `${API_SEARCH_URL}/${searchValue}?${sort}`;
 };
 
 searchForm.onsubmit = async (e) => {
@@ -36,8 +39,10 @@ searchForm.onsubmit = async (e) => {
 
   const searchValue = formData.get("searchValue");
   const searchType = formData.get("searchType");
+  const orderBy = formData.get("orderBy");
+  const orderType = formData.get("orderType");
 
-  const URL = getURL(searchValue, searchType);
+  const URL = getURL(searchValue, searchType, orderBy, orderType);
 
   const options = {
     mode: "cors",
