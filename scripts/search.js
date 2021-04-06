@@ -68,6 +68,4 @@ searchForm.onsubmit = async (e) => {
       orderCards.append(card);
     });
   }
-
-  console.log(orders);
 };

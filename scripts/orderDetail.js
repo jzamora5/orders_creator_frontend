@@ -32,5 +32,3 @@ detail.forEach((order) => {
     shippingDetailElement
   );
 });
-
-console.log(detail);
