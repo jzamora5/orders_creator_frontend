@@ -6,6 +6,8 @@ export const LOCAL_INDEX = `${LOCAL_HOST}/index.html`;
 
 export const LOCAL_SEARCH = `${LOCAL_HOST}/search.html`;
 
+export const LOCAL_DETAIL = `${LOCAL_HOST}/order_detail.html`;
+
 export const API_AUTH_URL = `${API_URL}/auth/login`;
 
 export const SEARCH_ROUTES = {

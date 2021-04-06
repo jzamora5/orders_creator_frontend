@@ -1,4 +1,4 @@
-import { SEARCH_ROUTES } from "./constants.js";
+import { SEARCH_ROUTES, LOCAL_DETAIL, LOCAL_INDEX } from "./constants.js";
 import { createCard } from "./utils.js";
 
 const body = document.getElementById("body");
@@ -49,28 +49,23 @@ searchForm.onsubmit = async (e) => {
 
   const response = await fetch(URL, options);
 
-  const orders = await response.json();
-  console.log(orders);
+  if (response.status === 401) location.href = LOCAL_INDEX;
+
+  let orders = await response.json();
 
   orderCards.innerHTML = "";
+
+  if (!Array.isArray(orders) && typeof orders === "object") orders = [orders];
 
   if (Array.isArray(orders)) {
     orders.forEach((order) => {
       const card = createCard(order);
 
       card.addEventListener("click", async (e) => {
-        const url = `${SEARCH_ROUTES["orderId"]}/${order.id}`;
-        console.log(url);
-        const response = await fetch(url, options);
-        const detail = await response.json();
-
-        console.log(detail);
+        location.href = `${LOCAL_DETAIL}?id=${order.id}`;
       });
       orderCards.append(card);
     });
-  } else if (typeof orders === "object") {
-    const card = createCard(orders);
-    orderCards.append(card);
   }
 
   console.log(orders);

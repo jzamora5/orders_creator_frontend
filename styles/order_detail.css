@@ -16,19 +16,14 @@ html {
   justify-content: center;
 }
 
-.search-bar {
-  width: 50%;
+.detail-card {
+  border: 1px solid DimGrey;
+  text-transform: capitalize;
+  padding: 20px;
+  display: flex;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
-.card {
-  width: 50%;
-  border: 1px solid gray;
-  border-radius: 10%;
+.detail-card div {
   padding: 10px;
-  margin: 20px;
-}
-
-.card h3 {
-  font-size: 20px;
-  /* text-align: center; */
 }
