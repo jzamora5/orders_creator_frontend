@@ -17,8 +17,8 @@ const getURL = (searchValue, searchType) => {
     //   return `${API_SEARCH_URL}/${searchValue}`;
     // case "date":
     //   return `${API_SEARCH_URL}/${searchValue}`;
-    // case "shipping":
-    //   return `${API_SEARCH_URL}/${searchValue}`;
+    case "shipping":
+      return `${API_SEARCH_URL}/?${searchValue}`;
     // case "orderId":
     //   return `${API_SEARCH_URL}/${searchValue}`;
     // case "orderIdList":
@@ -60,10 +60,6 @@ searchForm.onsubmit = async (e) => {
   if (Array.isArray(orders)) {
     orders.forEach((order) => {
       const card = createCard(order);
-
-      card.addEventListener("click", async (e) => {
-        location.href = `${LOCAL_DETAIL}?id=${order.id}`;
-      });
       orderCards.append(card);
     });
   }

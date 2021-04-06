@@ -17,11 +17,16 @@ html {
 }
 
 .detail-card {
+  margin-top: 20px;
   border: 1px solid DimGrey;
   text-transform: capitalize;
   padding: 20px;
-  display: flex;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  overflow-x: scroll;
+}
+
+.detail-card .container {
+  display: flex;
 }
 
 .detail-card div {

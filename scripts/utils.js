@@ -1,10 +1,10 @@
-function isIterable(value) {
-  return Symbol.iterator in Object(value);
-}
+import { LOCAL_DETAIL } from "./constants.js";
 
 export function createCard(order) {
   const card = document.createElement("div");
   card.className = "card";
+
+  const cardBody = document.createElement("div");
 
   //   card.addEventListener("click", () => {
   //     console.log(cardData.title);
@@ -12,15 +12,15 @@ export function createCard(order) {
 
   const cardTitle = document.createElement("h3");
   cardTitle.innerText = `Id: ${order.id}`;
-  card.append(cardTitle);
+  cardBody.append(cardTitle);
 
   const cardTotal = document.createElement("p");
   cardTotal.innerText = String.raw`Total: $${order.total}`;
-  card.append(cardTotal);
+  cardBody.append(cardTotal);
 
   const cardCreated = document.createElement("p");
   cardCreated.innerText = String.raw`Created In: $${order.created_at}`;
-  card.append(cardCreated);
+  cardBody.append(cardCreated);
 
   // const cardList = document.createElement("ul");
 
@@ -32,10 +32,34 @@ export function createCard(order) {
 
   // card.append(cardList);
 
+  const cardDetail = document.createElement("button");
+  cardDetail.innerText = "Detail";
+
+  cardDetail.addEventListener("click", async (e) => {
+    location.href = `${LOCAL_DETAIL}?id=${order.id}`;
+  });
+
+  card.append(cardBody);
+  card.append(cardDetail);
+
   return card;
 }
 
 export function createDetail(order, orderParent, userParent, shippingParent) {
+  const orderTitle = document.createElement("h3");
+  orderTitle.innerText = "Order Information";
+  const userTitle = document.createElement("h3");
+  userTitle.innerText = "User Information";
+  const shippingTitle = document.createElement("h3");
+  shippingTitle.innerText = "Shipping Information";
+
+  const orderContainer = document.createElement("div");
+  orderContainer.className = "container";
+  const userContainer = document.createElement("div");
+  userContainer.className = "container";
+  const shippingContainer = document.createElement("div");
+  shippingContainer.className = "container";
+
   for (const [key, value] of Object.entries(order)) {
     const title = document.createElement("h4");
     title.className = "detail_title";
@@ -50,12 +74,35 @@ export function createDetail(order, orderParent, userParent, shippingParent) {
     div.append(title);
     div.append(detailText);
 
-    if (key === "user_information") {
-      userParent.append(div);
-    } else if (key === "shipping_info") {
-      shippingParent.append(div);
+    if (key === "user_information" || key === "shipping_info") {
+      for (const [keyInner, valueInner] of Object.entries(order[key])) {
+        const titleInner = document.createElement("h4");
+        titleInner.className = "detail_title";
+        titleInner.innerText = keyInner;
+
+        const detailTextInner = document.createElement("p");
+        detailTextInner.className = "detail_text";
+        detailTextInner.innerText = valueInner;
+
+        const divInner = document.createElement("div");
+
+        divInner.append(titleInner);
+        divInner.append(detailTextInner);
+
+        if (key === "user_information") userContainer.append(divInner);
+        else if (key === "shipping_info") shippingContainer.append(divInner);
+      }
     } else {
-      orderParent.append(div);
+      orderContainer.append(div);
     }
   }
+
+  orderParent.append(orderTitle);
+  orderParent.append(orderContainer);
+
+  userParent.append(userTitle);
+  userParent.append(userContainer);
+
+  shippingParent.append(shippingTitle);
+  shippingParent.append(shippingContainer);
 }
